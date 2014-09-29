@@ -10,6 +10,9 @@ export HISTCONTROL=ignorespace:ignoredups
  
 # append to history file
 shopt -s histappend
+
+# review substitution result
+shopt -s histverify
  
 # check window size after each command
 shopt -s checkwinsize
@@ -39,12 +42,15 @@ export PS1="$GREEN\u$BLACK@$WHITE\h $YELLOW\W$BLACK\$ "
 alias ls='ls -ph --color=auto'
 alias l='ls -l'
 alias ll='l -a'
-alias t='tree'
-alias tt='t -p'
-alias vi='vim'
+alias t='tree -ph'
+alias tt='t -a'
 alias vim='vim -p'
+alias vi='vim'
 alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
 
-# default
-export EDITOR="vim"
+# default editor
+EDITOR="vim"
+
+# local changes
+[[ -f ~/.bashrc_local ]] && . ~/.bashrc_local

@@ -1,77 +1,84 @@
-"" My vimrc !
-" déctive la compatibilitévec VI
+"" My vimrc!
+
+" disable vi compatibility
 set nocompatible
  
-" déctive les clignotements ou les bips systès
+" disable blinks and beeps
 set noerrorbells
  
-" active la souris
+" enable mouse
 if has('mouse')
   set mouse=a
 endif
  
-" active la numétation des lignes
+" display line numbers
 set nu
  
-" rée les touches <backspace> et <del>
-" valeurs possibles (vous pouvez les combiner avec des virgules) :
-"   - indent : permet d'effacer ou non les indentations
-"   - eol : permet d'effacer le saut de ligne avec <del>
-"   - start : permet d'effacer le saut de ligne avec <backspace>
-" raccourcis :
+" define keys <backspace> and <del>
+" remove: indent, eol, start
 "   - 0 => none
 "   - 1 => indent,eol
 "   - 2 => indent,eol,start
 set bs=2
  
-" active l'indentation 'intelligente'
-set si
+" smart indent
+set smartindent
  
-" charge les plugins et l'indentation suivant le type du fichier
+" load indent and plugins depending of filetype
 filetype plugin indent on
  
-" active la coloration syntaxique
+" syntax highlighting
 syntax on
  
-" affiche une ligne en bas de l'éan avec diverses informations
-" (ligne, colonne, mode, ...)
-" peut-êe customiser avec 'set rulerformat=[...]'
+" display status bar
+" 'set rulerformat=[...]'
 set ruler
  
-" affiche les commandes incomplès
+" display incomplete commands in status bar
 set showcmd
  
-" remplace les tabulations par des espaces
+" replace tab by spaces
 set expandtab
  
-" nombre d'espaces pour l'indentation automatique
-" et les commandes >> et <<
+" auto-indent size (+ >> and <<)
 set shiftwidth=4
  
-" nombre d'espaces pour <tab> et <backspace>
+" size indent <tab> and <backspace>
 set softtabstop=4
  
-" nombre d'espaces pour <tab> sans 'expandtab'
-" (utile pour les makefiles)
+" size indent for <tab> without 'expandtab'
 set tabstop=4
  
-" recherche en boucle
+" loop search
 set wrapscan
  
-" commence la recherche tandis que l'on éit le pattern
+" incremental search
 set incsearch
  
-" déctive la coloration de la recherche
+" disable color highlighting of search
 set nohlsearch
+
+" ignore case search
+set ignorecase
+set smartcase
+
+" jump to matching bracket
+set showmatch
  
-" déctive les backups (fichiers ~)
+" disable backups (~file)
 set nobackup
+
+" underline current line
+set cursorline
+
+" refresh file if updated
+set autoread
  
-" lorsque la console a un fond noir
-"set background=dark
+" black background
+set background=dark
  
  
-" Paramèes de tabulation suivant le type du fichier
+" indent param for some filetypes
 au FileType html set softtabstop=2
 au FileType html set shiftwidth=2
 au FileType html set tabstop=2
@@ -104,6 +111,7 @@ au FileType eruby set softtabstop=2
 au FileType eruby set shiftwidth=2
 au FileType eruby set tabstop=2
  
-" utilise des templates de fichier
+
+" file templates
 "autocmd BufNewFile main.cpp 0r $HOME/.vim/templates/main.cpp.tpl
 "autocmd BufNewFile Makefile 0r $HOME/.vim/templates/Makefile.tpl
