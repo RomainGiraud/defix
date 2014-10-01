@@ -27,7 +27,7 @@ mesg n
 
 # add $HOME/bin to path
 if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+  export PATH="$HOME/bin:$PATH"
 fi
 
 
@@ -50,7 +50,10 @@ alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
 
 # default editor
-EDITOR="vim"
+export EDITOR="vim"
+
+# terminator colors
+export TERM=xterm-256color
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
