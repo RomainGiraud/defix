@@ -13,6 +13,7 @@ endif
  
 " display line numbers
 set nu
+set relativenumber
  
 " define keys <backspace> and <del>
 " remove: indent, eol, start
@@ -32,6 +33,7 @@ syntax on
  
 " display status bar
 " 'set rulerformat=[...]'
+set laststatus=2
 set ruler
  
 " display incomplete commands in status bar
@@ -70,6 +72,9 @@ set nobackup
 
 " underline current line
 set cursorline
+
+" scroll lines around
+set scrolloff=10
 
 " refresh file if updated
 set autoread
