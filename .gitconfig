@@ -4,6 +4,7 @@
 [alias]
     lg = log --graph --oneline --decorate --all
     dt = difftool
+    mt = mergetool
 [push]
     default = simple
 [diff]
