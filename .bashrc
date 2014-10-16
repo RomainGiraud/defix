@@ -52,8 +52,9 @@ alias open='xdg-open'
 # default editor
 export EDITOR="vim"
 
-# terminator colors
+# colors
 export TERM=xterm-256color
+[[ -f ~/.bashrc_colors ]] && . ~/.bashrc_colors
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
