@@ -168,7 +168,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-"set t_Co=256
+let base16colorspace="256"
+set t_Co=256
+set background=dark
 colorscheme base16-default
 "colorscheme base16-solarized
 
