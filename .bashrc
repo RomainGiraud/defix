@@ -58,5 +58,3 @@ export TERM=xterm-256color
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
-
-if [ "$TMUX" = "" ]; then tmux; fi
