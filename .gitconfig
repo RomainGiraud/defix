@@ -15,3 +15,5 @@
     tool = meld
 [color]
     ui = true
+[pull]
+	rebase = preserve
