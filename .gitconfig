@@ -1,19 +1,25 @@
 [user]
-    email = giraud.romain@gmail.com
     name = Romain Giraud
+    email = giraud.romain@gmail.com
+[color]
+    ui = true
 [alias]
-    lg = log --graph --oneline --decorate --all
+    st = status
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
     dt = difftool
     mt = mergetool
+[core]
+    #pager = cat
 [push]
     default = simple
 [diff]
     tool = meld
+    wordRegex = .
 [difftool]
     prompt = false
 [merge]
     tool = meld
-[color]
-    ui = true
 [pull]
-	rebase = preserve
+    rebase = preserve
+[status]
+    showuntrackedfiles = all
