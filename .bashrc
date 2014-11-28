@@ -18,15 +18,15 @@ shopt -s histverify
 shopt -s checkwinsize
  
 # auto-completion
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+if [[ -f /etc/bash_completion ]]; then
+  . /etc/bash_completion
 fi
  
 # disallow messages from other users
 mesg n
 
 # add $HOME/bin to path
-if [ -d "$HOME/bin" ]; then
+if [[ -d "$HOME/bin" ]]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
@@ -63,3 +63,4 @@ fi
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
+
