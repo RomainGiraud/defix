@@ -1,0 +1,25 @@
+#!/bin/bash
+# http://unix.stackexchange.com/questions/107315/less-quit-if-one-screen-without-no-init
+
+n=0
+lines=
+LINES=$(tput lines)
+
+case $LINES in
+	''|*[!0-9]*) exec less;;
+esac
+
+while [[ $n -lt $LINES ]] && IFS= read -r line; do
+	if [[ $n -eq 0 ]]; then
+		lines="$line"
+	else
+		lines="$lines\n$line"
+	fi
+	let n++
+done
+
+if [[ $n -eq $LINES ]]; then
+	{ echo -e "$lines"; exec cat; } | exec less
+else
+	echo -e "$lines"
+fi

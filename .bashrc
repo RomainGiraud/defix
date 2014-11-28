@@ -49,6 +49,17 @@ alias vi='vim'
 alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
 alias tmux='TERM=screen-256color tmux'
+#alias f='find ./ -iname'
+alias rebash='source ~/.bashrc'
+
+# personnal less function
+export LESS="-Ri"
+alias less="mless"
+
+function ff()
+{
+  find ./ -iname "*$1*"
+}
 
 # default editor
 export EDITOR="vim"
