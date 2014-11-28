@@ -48,12 +48,17 @@ alias vim='vim -p'
 alias vi='vim'
 alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
+alias tmux='TERM=screen-256color tmux'
 
 # default editor
 export EDITOR="vim"
 
+# TERM variable
+if [[ -z $TMUX ]]; then
+  export TERM=xterm-256color
+fi
+
 # colors
-export TERM=xterm-256color
 [[ -f ~/.bashrc_colors ]] && . ~/.bashrc_colors
 
 # local changes
