@@ -8,10 +8,11 @@
     lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
     dt = difftool
     mt = mergetool
+    br = branch -avv
 [core]
-    #pager = cat
+	pager = mless
 [push]
-    default = simple
+	default = upstream
 [diff]
     tool = meld
     wordRegex = .
