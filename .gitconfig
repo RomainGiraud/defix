@@ -10,9 +10,9 @@
     mt = mergetool
     br = branch -avv
 [core]
-	pager = mless
+    pager = mless
 [push]
-	default = upstream
+    default = upstream
 [diff]
     tool = meld
     wordRegex = .
