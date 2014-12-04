@@ -49,6 +49,7 @@ alias vi='vim'
 alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
 alias tmux='TERM=screen-256color tmux'
+alias grep='grep --color=auto'
 #alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
 
