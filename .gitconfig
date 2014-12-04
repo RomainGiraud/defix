@@ -10,7 +10,7 @@
     mt = mergetool
     br = branch -avv
 [core]
-    pager = mless
+    pager = mpager
 [push]
     default = upstream
 [diff]

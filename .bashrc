@@ -52,9 +52,10 @@ alias tmux='TERM=screen-256color tmux'
 #alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
 
-# personnal less function
-export LESS="-Ri"
-alias less="mless"
+# default pager
+alias less='vimpager'
+export PAGER='vimpager'
+export MANPAGER='vimpager'
 
 function ff()
 {
