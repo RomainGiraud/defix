@@ -19,7 +19,7 @@ while [[ $n -lt $LINES ]] && IFS= read -r line; do
 done
 
 if [[ $n -eq $LINES ]]; then
-	{ echo -e "$lines"; exec cat; } | exec vimpager
+	{ echo -e "$lines"; exec vimcat; } | exec vimpager
 else
 	echo -e "$lines"
 fi
