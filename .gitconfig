@@ -5,7 +5,7 @@
     ui = true
 [alias]
     st = status
-    lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an)%Creset %C(blue)<%cr>%Creset'
     dt = difftool
     mt = mergetool
     br = branch -avv
@@ -14,13 +14,15 @@
 [push]
     default = upstream
 [diff]
-    tool = meld
+    tool = vimdiff
     wordRegex = .
 [difftool]
     prompt = false
 [merge]
-    tool = meld
+    tool = vimdiff
 [pull]
     rebase = preserve
 [status]
     showuntrackedfiles = all
+[fetch]
+    prune = true
