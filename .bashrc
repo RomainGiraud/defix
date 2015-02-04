@@ -71,9 +71,6 @@ if [[ -z $TMUX ]]; then
   export TERM=xterm-256color
 fi
 
-# colors
-[[ -f ~/.bashrc_colors ]] && . ~/.bashrc_colors
-
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
 
