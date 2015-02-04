@@ -30,6 +30,9 @@ filetype plugin indent on
  
 " syntax highlighting
 syntax on
+
+" force fileformats
+set fileformats=unix
  
 " display status bar
 " 'set rulerformat=[...]'
@@ -57,8 +60,8 @@ set wrapscan
 " incremental search
 set incsearch
  
-" disable color highlighting of search
-set nohlsearch
+" enable color highlighting of search
+set hlsearch
 
 " ignore case search
 set ignorecase
@@ -153,6 +156,10 @@ Plugin 'tpope/vim-fugitive'
 " base16 scheme
 Plugin 'chriskempson/base16-vim'
 
+Plugin 'AnsiEsc.vim'
+
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -172,16 +179,19 @@ filetype plugin indent on    " required
 " color scheme
 
 " number of colors
-let base16colorspace="256"
+"let base16colorspace="256"
+"let g:solarized_termcolors=256
 "set t_Co=256
-
-" default if vimdiff
-if &diff
-  colorscheme default
-else
-  colorscheme base16-default
-endif
 
 " dark background
 set background=dark
+
+" theme
+colorscheme solarized
+
+" correct diff
+highlight DiffAdd cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
+highlight DiffDelete cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
+highlight DiffChange cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
+highlight DiffText cterm=none ctermfg=black ctermbg=White gui=none guifg=black guibg=White
 
