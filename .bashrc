@@ -81,6 +81,7 @@ alias open='xdg-open'
 alias grep='grep --color=auto'
 alias g='grep -ir'
 alias f='find ./ -iname'
+alias tm-clip='tmux show-buffer'
 alias rebash='source ~/.bashrc'
 
 function ff()
