@@ -82,6 +82,7 @@ alias grep='grep --color=auto'
 alias g='grep -ir'
 alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
+alias sudo='sudo -E'
 
 function ff()
 {
