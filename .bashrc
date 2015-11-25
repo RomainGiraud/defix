@@ -69,7 +69,7 @@ if ( [[ "$TERM" =~ ^xterm* ]] \
 fi
 
 # aliases
-alias ls='ls -ph --color=auto'
+alias ls='ls -ph --color=auto --group-directories-first'
 alias l='ls -l'
 alias ll='l -a'
 alias t='tree -ph'
