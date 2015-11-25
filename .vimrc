@@ -84,7 +84,10 @@ set autoread
  
 " black background
 set background=dark
- 
+
+" more natural way to open split panes
+set splitbelow
+set splitright
  
 " indent param for some filetypes
 au FileType html set softtabstop=2
