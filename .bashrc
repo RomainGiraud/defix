@@ -98,10 +98,15 @@ export MANPAGER='vimpager'
 # default editor
 export EDITOR="vim"
 
+# color in gcc/g++
+export GCC_COLORS=1
+
+# default language
+export LANG="en_US.utf8"
+
 # enable coredump
 ulimit -H -c unlimited
 ulimit -S -c unlimited
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
-
