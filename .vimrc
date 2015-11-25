@@ -118,6 +118,10 @@ au FileType ruby set softtabstop=2
 au FileType ruby set shiftwidth=2
 au FileType ruby set tabstop=2
  
+au FileType python set softtabstop=2
+au FileType python set shiftwidth=2
+au FileType python set tabstop=2
+
 au FileType eruby set softtabstop=2
 au FileType eruby set shiftwidth=2
 au FileType eruby set tabstop=2
