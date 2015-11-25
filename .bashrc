@@ -86,7 +86,9 @@ alias sudo='sudo -E'
 
 function ff()
 {
-  find ./ -iname "*$1*"
+  obj=$1
+  shift 1
+  find ./ -iname "*$obj*" $*
 }
 
 # default pager
