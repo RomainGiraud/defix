@@ -4,25 +4,37 @@
 [color]
     ui = true
 [alias]
-    st = status
+    st = status --short --branch
+    stl = stash list
+    sts = stash save
+    stp = stash pop
     lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an)%Creset %C(blue)<%cr>%Creset'
     dt = difftool
+    dtt = !git dt -- $(git st | tail +2 | fzf --tac --multi | awk '{ print $2}')
     mt = mergetool
     br = branch -avv
+    g = grep --extended-regexp --line-number --break --heading
 [core]
     pager = mpager
 [push]
     default = upstream
 [diff]
     tool = vimdiff
+    guitool = gvimdiff
     wordRegex = .
+    indentHeuristic = true
+    mnemonicprefix = true
 [difftool]
-    prompt = false
+    prompt = true
+    trustExitCode = true
 [merge]
     tool = vimdiff
+    guitool = gvimdiff
 [pull]
     rebase = preserve
 [status]
     showuntrackedfiles = all
 [fetch]
     prune = true
+[rerere]
+    enabled = true

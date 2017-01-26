@@ -69,10 +69,11 @@ if ( [[ "$TERM" =~ ^xterm* ]] \
 fi
 
 # aliases
+# A trailing space in VALUE causes the next word to be checked for alias substitution when the alias is expanded.
 alias ls='ls -ph --color=auto --group-directories-first'
 alias l='ls -l'
 alias ll='l -a'
-alias t='tree -ph'
+alias t='tree -phC'
 alias tt='t -a'
 alias vim='vim -p'
 alias vi='vim'
@@ -82,7 +83,10 @@ alias grep='grep --color=auto'
 alias g='grep -ir'
 alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
-alias sudo='sudo -E'
+alias sudo='sudo -E '
+alias watch='watch '
+alias gdb='LC_NUMERIC=C gdb'
+alias bd=". bd -si"
 
 function ff()
 {
@@ -102,7 +106,7 @@ export EDITOR="vim"
 export GCC_COLORS=1
 
 # default language
-export LANG="en_US.utf8"
+#export LANG="en_US.utf8"
 
 # enable coredump
 ulimit -H -c unlimited

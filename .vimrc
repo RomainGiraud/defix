@@ -1,5 +1,8 @@
 "" My vimrc!
 
+" Faster refraw
+set ttyfast
+
 " disable vi compatibility
 set nocompatible
  
@@ -8,12 +11,15 @@ set noerrorbells
  
 " enable mouse
 if has('mouse')
-  set mouse=a
+  set mouse=nic " do not enable in visual mode
 endif
  
 " display line numbers
 set nu
 set relativenumber
+
+" Consider a file large in MB
+let g:LargeFile=10
  
 " define keys <backspace> and <del>
 " remove: indent, eol, start
@@ -41,6 +47,12 @@ set ruler
  
 " display incomplete commands in status bar
 set showcmd
+
+" navigate between unsave buffers
+set hidden
+
+" command completion
+set wildmode=longest,list
  
 " replace tab by spaces
 set expandtab
@@ -78,6 +90,7 @@ set cursorline
 
 " scroll lines around
 set scrolloff=10
+set sidescrolloff=5
 
 " refresh file if updated
 set autoread
@@ -93,6 +106,14 @@ set splitright
 au FileType html set softtabstop=2
 au FileType html set shiftwidth=2
 au FileType html set tabstop=2
+
+au FileType css set softtabstop=2
+au FileType css set shiftwidth=2
+au FileType css set tabstop=2
+
+au FileType scss set softtabstop=2
+au FileType scss set shiftwidth=2
+au FileType scss set tabstop=2
  
 au FileType xml set softtabstop=2
 au FileType xml set shiftwidth=2
@@ -125,7 +146,10 @@ au FileType python set tabstop=2
 au FileType eruby set softtabstop=2
 au FileType eruby set shiftwidth=2
 au FileType eruby set tabstop=2
- 
+
+au FileType xquery set softtabstop=2
+au FileType xquery set shiftwidth=2
+au FileType xquery set tabstop=2
 
 " file templates
 "autocmd BufNewFile main.cpp 0r $HOME/.vim/templates/main.cpp.tpl

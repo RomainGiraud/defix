@@ -1,6 +1,6 @@
 URxvt.intensityStyles: false
 URxvt.scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9
+URxvt.font: xft:Meslo LG S for Powerline:size=9
 URxvt.letterSpace: -1
 URxvt.fading: 0
 !URxvt.iconFile: /usr/share/icons/Clarity/scalable/apps/terminal.svg
@@ -13,11 +13,12 @@ URxvt.keysym.C-S-Left: \033[1;6D
 URxvt.keysym.C-S-Right: \033[1;6C
 URxvt.keysym.C-S-Up: \033[1;6A
 URxvt.keysym.C-S-Down: \033[1;6B
+URxvt*termName: rxvt-unicode
 
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
-URxvt.imLocale: en_US.utf8
+!URxvt.imLocale: en_US.utf8
 
 Xft.dpi: 96
 Xft.antialias: true
