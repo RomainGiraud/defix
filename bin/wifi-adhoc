@@ -1,0 +1,18 @@
+rfkill unblock wifi
+
+ifconfig wlp3s0 down
+iwconfig wlp3s0 mode Ad-Hoc
+iwconfig wlp3s0 essid MyNetwork
+iwconfig wlp3s0 channel auto
+iwconfig wlp3s0 key restricted MyPassword
+iwconfig wlp3s0 key on
+ifconfig wlp3s0 up 192.168.10.1 netmask 255.255.255.0
+
+iptables --flush
+iptables --table nat --flush
+iptables --delete-chain
+iptables --table nat --delete-chain
+iptables --table nat --append POSTROUTING --out-interface eno1 -j MASQUERADE
+iptables --append FORWARD --in-interface wlp3s0 -j ACCEPT
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sysctl -w net.ipv4.ip_forward=1
