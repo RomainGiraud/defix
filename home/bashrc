@@ -73,6 +73,7 @@ fi
 alias ls='ls -ph --color=auto --group-directories-first'
 alias l='ls -l'
 alias ll='l -a'
+alias lt='ll -t'
 alias t='tree -phC'
 alias tt='t -a'
 alias vim='vim -p'
@@ -87,6 +88,7 @@ alias sudo='sudo -E '
 alias watch='watch '
 alias gdb='LC_NUMERIC=C gdb'
 alias bd=". bd -si"
+alias list-ws='for m in $(bspc query -M --names); do echo "== $m =="; bspc query -T -m $m | jq ".desktops[] | .name, .id"; done'
 
 function ff()
 {
@@ -111,6 +113,9 @@ export GCC_COLORS=1
 # enable coredump
 ulimit -H -c unlimited
 ulimit -S -c unlimited
+
+# direnv
+eval "$(direnv hook bash)"
 
 # local changes
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
