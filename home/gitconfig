@@ -1,10 +1,9 @@
 [user]
     name = Romain Giraud
-    email = xxx@yyy.zz
 [color]
     ui = true
 [alias]
-    st = status --short --branch
+    st = status --short
     stl = stash list
     sts = stash save
     stp = stash pop
@@ -38,3 +37,5 @@
     prune = true
 [rerere]
     enabled = true
+[include]
+    path = .gitconfig_local
