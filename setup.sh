@@ -14,6 +14,7 @@ declare -A HOME_FILES=(
     ['.gitconfig']='home/gitconfig'
     ['.tmux.conf']='home/tmux.conf'
     ['.vimrc']='home/vimrc'
+    ['.xinitrc']='home/xinitrc'
     ['.Xresources']='home/Xresources'
 )
 
