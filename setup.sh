@@ -1,27 +1,57 @@
 #!/bin/bash
 
 declare -a BIN_FILES=(
-    'bin/bd'
-    'bin/mpager'
-    'bin/plompt'
-    'bin/renamer'
-    'bin/repo-each'
+    'bd'
+    'mpager'
+    'plompt'
+    'renamer'
+    'repo-each'
 )
 
 declare -A HOME_FILES=(
-    ['.bashrc']='home/bashrc'
-    ['.gdbinit']='home/gdbinit'
-    ['.gitconfig']='home/gitconfig'
-    ['.tmux.conf']='home/tmux.conf'
-    ['.vimrc']='home/vimrc'
-    ['.xinitrc']='home/xinitrc'
-    ['.Xresources']='home/Xresources'
+    ['.bashrc']='bashrc'
+    ['.gdbinit']='gdbinit'
+    ['.gitconfig']='gitconfig'
+    ['.tmux.conf']='tmux.conf'
+    ['.vimrc']='vimrc'
+    ['.xinitrc']='xinitrc'
+    ['.Xresources']='Xresources'
 )
 
+declare -a CONFIG_FILES=(
+    'bspwm/bspwmrc'
+    'sxhkd/sxhkdrc'
+    'polybar/config'
+    'polybar/launch.sh'
+)
+
+function error {
+    echo $* 1>&2
+    exit 1
+}
+
+function make_link {
+    target=$(realpath $1)
+    link_name=$(realpath $2)
+    if [[ -f "$1" ]]; then
+        if [[ "$target" == "$link_name" ]]; then
+            return
+        fi
+        error "link to $1 already exists and point to $link_name"
+    fi
+    echo ln -s "$target" "$link_name"
+}
+
 for f in ${BIN_FILES[@]}; do
-    ln -s "$(realpath $f)" "$HOME/bin/$(basename $f)"
+    make_link "bin/$f" "$HOME/bin/$(basename $f)"
 done
 
 for f in ${!HOME_FILES[@]}; do
-    ln -s "$(realpath ${HOME_FILES[$f]})" "$HOME/$(basename $f)"
+    make_link "home/${HOME_FILES[$f]}" "$HOME/$(basename $f)"
+done
+
+for f in ${CONFIG_FILES[@]}; do
+    dir=$(dirname $f)
+    mkdir -p ".config/$dir"
+    make_link "config/$f" "$HOME/.config/$dir/$(basename $f)"
 done
