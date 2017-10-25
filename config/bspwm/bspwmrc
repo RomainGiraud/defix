@@ -1,0 +1,34 @@
+#!/bin/sh
+
+xrdb ~/.Xresources
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc -m 1 &
+
+bspc monitor -d term code web mail music other
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
+
+bspc desktop web -l monocle
+
+bspc rule -a Thunderbird desktop=mail
+bspc rule -a Spotify desktop=music
+bspc rule -a Steam desktop=game state=floating
+bspc rule -a Firefox:Navigator desktop=web
+bspc rule -a Chromium desktop=game
+bspc rule -a Wicd-client.py state=floating
+
+#bspc config focus_follows_pointer true
+bspc config click_to_focus true
+
+#dropbox
+#wicd-client
+#pcmanfm -d
+#compton &
+
+$HOME/bin/monitors-refresh
+MONITOR=$(monitors get -p) $HOME/.config/polybar/launch.sh
+feh --bg-fill ~/Documents/images/mountains_blur.jpg
