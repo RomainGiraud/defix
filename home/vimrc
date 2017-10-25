@@ -221,10 +221,3 @@ set background=dark
 
 " theme
 colorscheme solarized
-
-" correct diff
-highlight DiffAdd cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
-highlight DiffDelete cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
-highlight DiffChange cterm=none ctermfg=white ctermbg=Blue gui=none guifg=white guibg=Blue
-highlight DiffText cterm=none ctermfg=black ctermbg=White gui=none guifg=black guibg=White
-
