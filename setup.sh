@@ -33,7 +33,7 @@ function error {
 function make_link {
     target=$(realpath $1 2> /dev/null)
     link_name=$(realpath $2 2> /dev/null)
-    if [[ -f "$1" ]]; then
+    if [[ -f "$2" ]]; then
         if [[ "$target" == "$link_name" ]]; then
             return
         fi
