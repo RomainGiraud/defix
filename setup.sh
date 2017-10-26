@@ -31,15 +31,18 @@ function error {
 }
 
 function make_link {
-    target=$(realpath $1)
-    link_name=$(realpath $2)
+    target=$(realpath $1 2> /dev/null)
+    link_name=$(realpath $2 2> /dev/null)
     if [[ -f "$1" ]]; then
         if [[ "$target" == "$link_name" ]]; then
             return
         fi
-        error "link to $1 already exists and point to $link_name"
+
+        if [[ -n $link_name ]]; then
+            error "link to $1 already exists and point to $link_name"
+        fi
     fi
-    echo ln -s "$target" "$link_name"
+    ln -sf "$target" "$2"
 }
 
 for f in ${BIN_FILES[@]}; do
