@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+numbers=${1:-$(monitors get | wc -l)}
+
+if [[ $numbers == 1 ]]; then
+  monitors set eDP1
+  
+  bspc monitor HDMI2 -a tmp-1
+  bspc desktop code -m eDP1
+  bspc monitor HDMI2 -r
+  
+  bspc monitor HDMI3 -a tmp-2
+  bspc desktop term -m eDP1
+  bspc monitor HDMI3 -r
+  
+  bspc monitor eDP1 -o term code web mail music game
+  bspc monitor HDMI3 -r
+  bspc monitor HDMI2 -r
+
+  bspc desktop -f term
+#elif [[ $numbers == 2 ]]; then
+#  bspc monitor eDP1 -d web mail music game
+#  bspc monitor HDMI3 -d term code
+elif [[ $numbers == 3 ]]; then
+  monitors set eDP1 HDMI3 HDMI2
+  
+  bspc desktop term -m HDMI3
+  bspc desktop code -m HDMI2
+
+  bspc desktop Desktop -r
+  bspc desktop Desktop -r
+
+  bspc desktop -f term
+fi
