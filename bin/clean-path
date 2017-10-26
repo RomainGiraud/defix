@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# This tool keep a clean PATH variable
+# * remove empty path (dangerous)
+# * remove duplicates
+# * but keep the same order!
+#
+# Usage: echo $(clean-path /usr/bin::/usr/local/bin:::::/usr/bin:/usr/sbin)
+
+PATH=$(echo $1 | sed 's/:/\n/g' | sed '/^$/d' | cat -n | sort -u -k 2 | sort -n -k 1 | cut -f 2 | paste -d ':' -s)
+echo -n $PATH
