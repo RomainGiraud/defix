@@ -2,10 +2,18 @@
 
 declare -a BIN_FILES=(
     'bd'
+    'clean-path'
+    'git-author-email-rewrite'
+    'monitors'
+    'monitors-refresh'
     'mpager'
+    'nyan'
+    'pipes'
     'plompt'
     'renamer'
     'repo-each'
+    'screenlock'
+    'tabs2spaces'
 )
 
 declare -A HOME_FILES=(
