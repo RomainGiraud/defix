@@ -85,23 +85,36 @@ alias t='tree -phC'
 alias tt='t -a'
 alias vim='vim -p'
 alias vi='vim'
+alias v='vim'
 alias vif='vi `find ./ -name \!#:1`'
 alias open='xdg-open'
+alias o='open'
+alias oo='open .'
 alias grep='grep --color=auto'
 alias g='grep -ir'
 alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
-alias sudo='sudo -E '
+# If the last character of the alias value is a space or tab character, then the next command word following the alias is also checked for alias expansion. 
+alias sudo='sudo '
 alias watch='watch '
 alias gdb='LC_NUMERIC=C gdb'
 alias bd=". bd -si"
 alias list-ws='for m in $(bspc query -M --names); do echo "== $m =="; bspc query -T -m $m | jq ".desktops[] | .name, .id"; done'
+alias fs="stat -f \"%z bytes\""
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
 
 function ff()
 {
   obj=$1
   shift 1
   find ./ -iname "*$obj*" $*
+}
+
+function md()
+{
+  mkdir -p "$@" && cd "$@"
 }
 
 # default pager
