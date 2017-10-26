@@ -18,6 +18,7 @@ declare -a BIN_FILES=(
 
 declare -A HOME_FILES=(
     ['.bashrc']='bashrc'
+    ['.bash_profile']='bash_profile'
     ['.gdbinit']='gdbinit'
     ['.gitconfig']='gitconfig'
     ['.tmux.conf']='tmux.conf'
