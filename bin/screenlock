@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+scrot -z /tmp/screenshot.png
+convert /tmp/screenshot.png -blur -1x5 /tmp/screenshot_blur.png
+i3lock -i /tmp/screenshot_blur.png
+#i3lock -i <(import -window root - | convert -blur -1x5 - png:-)
