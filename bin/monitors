@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+
+import sys
+import subprocess
+
+usage='''\
+Tool to manipulate monitors through xrandr command.
+
+Usage:
+  {0} [command]
+
+Available commands:
+  get   Return list of monitors (connected)
+  set   Set monitors\
+'''.format("monitors")
+
+def error(msg):
+  print(msg, file=sys.stderr)
+  sys.exit(1)
+
+def execute(cmd):
+  process = subprocess.Popen(["bash", "-c", cmd], stdout=subprocess.PIPE, universal_newlines=True)
+  output, error = process.communicate()
+  return output.split()
+
+if len(sys.argv) < 2:
+  error(usage)
+
+if sys.argv[1] == 'get':
+  grep = 'grep " connected" '
+  if len(sys.argv) >= 3:
+    if sys.argv[2] == '-e':
+      grep += '| grep -v " connected (" '
+    elif sys.argv[2] == '-d':
+      grep = 'grep " connected (" '
+    elif sys.argv[2] == '-p':
+      grep += '| grep " primary " '
+  output = execute('xrandr -q | {0} | awk \'{{ print $1 }}\''.format(grep))
+  for o in output:
+    print(o)
+  sys.exit(0)
+
+if sys.argv[1] == 'set':
+  monitors_wanted = sys.argv[1:]
+  monitors = execute('xrandr -q | grep " connected" | awk \'{ print $1 }\'')
+  monitors_enabled = [m for m in monitors_wanted if m in monitors]
+  monitors_disabled = [m for m in monitors if m not in monitors_wanted]
+
+  #print(monitors_enabled)
+  #print("----")
+  #print(monitors_disabled)
+
+  cmd = 'xrandr '
+  prev = ''
+  for m in monitors_enabled:
+    cmd += ' --output "{0}" --auto'.format(m)
+    if prev:
+      cmd += ' --right-of "{0}"'.format(prev)
+    prev = m
+  for m in monitors_disabled:
+    cmd += ' --output "{0}" --off'.format(m)
+
+  execute(cmd)
+  execute('xrandr --output "{0}" --primary'.format(monitors_enabled[0]))
+
+
+#feh --bg-fill /home/romain/Documents/images/mountains_blur.jpg \
+#    --bg-fill /home/romain/Documents/images/mountains_blur.jpg \
+#    --bg-fill /home/romain/Documents/images/mountains_blur.jpg
