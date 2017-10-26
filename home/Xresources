@@ -26,7 +26,10 @@ URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
-! Old way to move tab
+! Remap keys (C-S modifiers do not work out of the box)
+! Move tab: see tmux.conf for further information
+URxvt.keysym.C-S-L: \033[1;6C
+URxvt.keysym.C-S-H: \033[1;6D
 !URxvt.keysym.C-S-Left: \033[1;6D
 !URxvt.keysym.C-S-Right: \033[1;6C
 !URxvt.keysym.C-S-Up: \033[1;6A
