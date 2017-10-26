@@ -1,0 +1,9 @@
+#!/bin/bash
+# replace all tab by spaces
+# $1 file to modify
+# $2 size of tab
+
+: ${TABSIZE:=4}
+[ ! -z $2 ] && TABSIZE=$2
+
+expand -t $TABSIZE "$1" | sponge "$1"
