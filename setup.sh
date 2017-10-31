@@ -31,9 +31,10 @@ declare -A HOME_FILES=(
 
 declare -a CONFIG_FILES=(
     'bspwm/bspwmrc'
-    'sxhkd/sxhkdrc'
     'polybar/config'
     'polybar/launch.sh'
+    'sxhkd/sxhkdrc'
+    'mimeapps.list'
     'user-dirs.dirs'
 )
 
