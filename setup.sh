@@ -34,6 +34,7 @@ declare -a CONFIG_FILES=(
     'sxhkd/sxhkdrc'
     'polybar/config'
     'polybar/launch.sh'
+    'user-dirs.dirs'
 )
 
 function error {
