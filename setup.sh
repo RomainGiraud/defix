@@ -1,8 +1,10 @@
 #!/bin/bash
 
 declare -a BIN_FILES=(
+    '24-bit-color'
     'bd'
     'clean-path'
+    'color-simpler'
     'git-author-email-rewrite'
     'monitors'
     'monitors-refresh'
