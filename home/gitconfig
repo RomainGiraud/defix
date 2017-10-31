@@ -5,8 +5,8 @@
 [alias]
     st = status --short
     stl = stash list
-    sts = stash save
-    stp = stash pop
+    sts = stash save -u --keep-index
+    stp = stash pop --index
     lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an)%Creset %C(blue)<%cr>%Creset'
     dt = difftool
     dtt = !git dt -- $(git st | tail +2 | fzf --tac --multi | awk '{ print $2}')
