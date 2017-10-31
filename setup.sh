@@ -66,6 +66,9 @@ done
 
 for f in ${CONFIG_FILES[@]}; do
     dir=$(dirname $f)
+    if [[ "$dir" == "." ]]; then
+        dir=""
+    fi
     mkdir -p ".config/$dir"
     make_link "config/$f" "$HOME/.config/$dir/$(basename $f)"
 done
