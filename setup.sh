@@ -79,4 +79,9 @@ for f in ${CONFIG_FILES[@]}; do
     make_link "config/$f" "$HOME/.config/$dir/$(basename $f)"
 done
 
-echo "Install base16-shell"
+echo "== Install following tools ==
+  - base16-shell: default ANSI colors
+  - bd: move to a parent directory
+  - direnv: env per directory
+  - gompt: enhanced prompt
+  - vimpager/vimcat: use vim instead of less/cat"
