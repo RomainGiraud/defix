@@ -5,6 +5,7 @@ declare -a BIN_FILES=(
     'bd'
     'clean-path'
     'color-simpler'
+    'colortest'
     'git-author-email-rewrite'
     'monitors'
     'monitors-refresh'
