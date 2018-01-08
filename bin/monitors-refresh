@@ -14,10 +14,11 @@ if [[ $numbers == 1 ]]; then
   bspc monitor HDMI3 -r
   
   bspc monitor eDP1 -o term code web mail music game
-  bspc monitor HDMI3 -r
-  bspc monitor HDMI2 -r
 
   bspc desktop -f term
+
+  bspc monitor HDMI3 -r
+  bspc monitor HDMI2 -r
 #elif [[ $numbers == 2 ]]; then
 #  bspc monitor eDP1 -d web mail music game
 #  bspc monitor HDMI3 -d term code
@@ -32,3 +33,5 @@ elif [[ $numbers == 3 ]]; then
 
   bspc desktop -f term
 fi
+
+feh --bg-fill ~/Documents/images/mountains.jpg
