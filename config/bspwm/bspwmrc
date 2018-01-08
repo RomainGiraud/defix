@@ -24,11 +24,11 @@ bspc rule -a Wicd-client.py state=floating
 #bspc config focus_follows_pointer true
 bspc config click_to_focus true
 
-#dropbox
-#wicd-client
-#pcmanfm -d
-#compton &
-
 $HOME/bin/monitors-refresh
 MONITOR=$(monitors get -p) $HOME/.config/polybar/launch.sh
-feh --bg-fill ~/Documents/images/mountains_blur.jpg
+feh --bg-fill ~/Documents/images/mountains.jpg
+
+dropbox &
+wicd-client -t &
+pcmanfm -d &
+#compton &
