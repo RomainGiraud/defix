@@ -189,6 +189,9 @@ Plugin 'AnsiEsc.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'rust-lang/rust.vim'
+Plugin 'sheerun/vim-polyglot.git'
+
+Plugin 'bkad/CamelCaseMotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -217,3 +220,6 @@ set background=dark
 
 " theme
 colorscheme base16-solarized-dark
+
+" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
