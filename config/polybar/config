@@ -18,7 +18,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/mainbar]
 monitor = ${env:MONITOR:eDP1}
 width = 90%
 height = 27
