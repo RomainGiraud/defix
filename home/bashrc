@@ -71,6 +71,7 @@ fi
 
 # aliases
 # A trailing space in VALUE causes the next word to be checked for alias substitution when the alias is expanded.
+# If the last character of the alias value is a space or tab character, then the next command word following the alias is also checked for alias expansion.
 alias ls='ls -ph --color=auto --group-directories-first'
 alias l='ls -l'
 alias ll='l -a'
@@ -88,10 +89,9 @@ alias grep='grep --color=auto'
 alias g='grep -ir'
 alias f='find ./ -iname'
 alias rebash='source ~/.bashrc'
-# If the last character of the alias value is a space or tab character, then the next command word following the alias is also checked for alias expansion. 
 alias sudo='sudo '
 alias watch='watch '
-alias gdb='LC_NUMERIC=C gdb'
+alias gdb='LC_ALL=C gdb'
 alias bd=". bd -si"
 alias list-ws='for m in $(bspc query -M --names); do echo "== $m =="; bspc query -T -m $m | jq ".desktops[] | .name, .id"; done'
 alias fs="stat -c \"%s bytes\""
@@ -99,6 +99,7 @@ alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
 
+# find any "*name*"
 function ff()
 {
   obj=$1
@@ -106,6 +107,7 @@ function ff()
   find ./ -iname "*$obj*" $*
 }
 
+# make directory with parents
 function md()
 {
   mkdir -p "$@" && cd "$@"
@@ -121,8 +123,8 @@ export EDITOR="vim"
 # color in gcc/g++
 export GCC_COLORS=1
 
-# default language
-#export LANG="en_US.utf8"
+# environment variable: http://pubs.opengroup.org/onlinepubs/7908799/xbd/envvar.html
+export LANG="en_US.UTF-8"
 
 # enable coredump
 ulimit -H -c unlimited
@@ -131,7 +133,11 @@ ulimit -S -c unlimited
 # direnv
 eval "$(direnv hook bash)"
 
-# local changes
+# personalize colors of ls command
+# http://www.linux-sxs.org/housekeeping/lscolors.html
+#eval $(dircolors ~/.dircolors)
+
+# local bashrc
 [[ -f ~/.bashrc_local ]] && . ~/.bashrc_local
 
 # default ANSI colors
