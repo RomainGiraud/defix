@@ -7,6 +7,7 @@ declare -a BIN_FILES=(
     'color-simpler'
     'colortest'
     'git-author-email-rewrite'
+    'git-quick-stats'
     'monitors'
     'monitors-refresh'
     'mpager'
