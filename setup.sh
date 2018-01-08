@@ -25,6 +25,7 @@ declare -A HOME_FILES=(
     ['.bash_profile']='bash_profile'
     ['.gdbinit']='gdbinit'
     ['.gitconfig']='gitconfig'
+    ['.gitignore']='gitignore'
     ['.tmux.conf']='tmux.conf'
     ['.vimrc']='vimrc'
     ['.xinitrc']='xinitrc'
@@ -32,6 +33,7 @@ declare -A HOME_FILES=(
 )
 
 declare -a CONFIG_FILES=(
+    'pcmanfm/default/pcmanfm.conf'
     'bspwm/bspwmrc'
     'polybar/config'
     'polybar/launch.sh'
