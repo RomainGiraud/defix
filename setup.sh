@@ -76,3 +76,5 @@ for f in ${CONFIG_FILES[@]}; do
     mkdir -p ".config/$dir"
     make_link "config/$f" "$HOME/.config/$dir/$(basename $f)"
 done
+
+echo "Install base16-shell"
