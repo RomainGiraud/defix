@@ -27,6 +27,9 @@ shopt -s checkwinsize
 # disallow messages from other users
 mesg n
 
+# vi mode in bash
+set -o vi
+
 # add $HOME/bin to path
 if [[ -d "$HOME/bin" ]]; then
   export PATH="$HOME/bin:$PATH"

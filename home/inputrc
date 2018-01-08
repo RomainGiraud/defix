@@ -1,0 +1,27 @@
+# default configuration
+$include /etc/inputrc
+
+set colored-stats on
+set visible-stats on
+set completion-ignore-case on
+set completion-prefix-display-length 3
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+
+#set show-mode-in-prompt on
+
+set editing-mode vi
+
+set keymap vi-command
+"\C-p":history-search-backward
+"\C-n":history-search-forward
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+Control-l: clear-screen
+
+set keymap vi-insert
+"\C-p":history-search-backward
+"\C-n":history-search-forward
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+Control-l: clear-screen

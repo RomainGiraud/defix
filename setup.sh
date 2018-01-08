@@ -26,6 +26,7 @@ declare -A HOME_FILES=(
     ['.gdbinit']='gdbinit'
     ['.gitconfig']='gitconfig'
     ['.gitignore']='gitignore'
+    ['.inputrc']='inputrc'
     ['.tmux.conf']='tmux.conf'
     ['.vimrc']='vimrc'
     ['.xinitrc']='xinitrc'
