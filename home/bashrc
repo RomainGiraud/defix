@@ -56,25 +56,15 @@ PROMPT_END="$BLACK> "
 export PROMPT_COMMAND=''
 export PS1="$PROMPT_START$PROMPT_END"
 
-# git prompt
-if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
-  . /usr/share/git/completion/git-prompt.sh
-
-  export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
-  export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch
-  export GIT_PS1_SHOWCOLORHINTS=1
-
-  export PROMPT_COMMAND='__git_ps1 "$PROMPT_START" "$PROMPT_END"'
-fi
-
+# if gompt exists, replace default prompt
 if ( [[ "$TERM" =~ ^xterm* ]] \
      || [[ "$TERM" =~ ^screen* ]] \
      || [[ "$TERM" =~ ^rxvt* ]] \
      || [[ "$TERM" =~ ^st* ]] ) \
-   && hash plompt 2>/dev/null; then
+   && hash gompt 2>/dev/null; then
 
   function _update_ps1() {
-    export PS1="$(plompt $?)"
+    export PS1="$(gompt -s $?)"
   }
   export PROMPT_COMMAND="_update_ps1;"
 fi

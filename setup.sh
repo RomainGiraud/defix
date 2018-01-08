@@ -13,7 +13,6 @@ declare -a BIN_FILES=(
     'mpager'
     'nyan'
     'pipes'
-    'plompt'
     'renamer'
     'repo-each'
     'screenlock'
