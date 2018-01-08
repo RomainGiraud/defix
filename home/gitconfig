@@ -3,6 +3,8 @@
 [color]
     ui = true
 [alias]
+    co = commit
+    ca = commit --amend
     st = status --short
     stl = stash list
     sts = stash save -u --keep-index
@@ -15,6 +17,7 @@
     g = grep --extended-regexp --line-number --break --heading
 [core]
     pager = mpager
+	excludesfile = /home/romain/.gitignore
 [push]
     default = upstream
 [diff]
