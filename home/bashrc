@@ -75,7 +75,8 @@ fi
 alias ls='ls -ph --color=auto --group-directories-first'
 alias l='ls -l'
 alias ll='l -a'
-alias lt='ll -t'
+alias lt='l -t'
+alias llt='ll -t'
 alias t='tree -phC'
 alias tt='t -a'
 alias vim='vim -p'
@@ -98,6 +99,7 @@ alias fs="stat -c \"%s bytes\""
 alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
+alias aurman='aurman --color always'
 
 # find any "*name*"
 function ff()
