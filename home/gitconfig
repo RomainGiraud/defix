@@ -5,9 +5,10 @@
 [alias]
     co = commit
     ca = commit --amend
+    can = commit --amend --no-edit
     st = status --short
     stl = stash list
-    sts = stash save -u --keep-index
+    sts = stash push -u --keep-index
     stp = stash pop --index
     lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an)%Creset %C(blue)<%cr>%Creset'
     dt = difftool
