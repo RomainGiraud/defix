@@ -20,6 +20,7 @@ bspc rule -a Steam desktop=game state=floating
 bspc rule -a Firefox:Navigator desktop=web
 bspc rule -a Chromium desktop=game
 bspc rule -a Wicd-client.py state=floating
+bspc rule -a Pavucontrol state=floating
 
 #bspc config focus_follows_pointer true
 bspc config click_to_focus true

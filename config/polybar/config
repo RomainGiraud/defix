@@ -8,116 +8,97 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:color0:#222}
-;background = #223
-background-alt = #445
-;foreground = ${xrdb:color8:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = #181818
+background-alt = #585858
+foreground = #fafafa
+foreground-alt = #eaeaea
+
+primary = #0892a5
+secondary = #fa8334
+
+color1 = ${colors.primary}
+color2 = ${colors.secondary}
+color3 = #fffd77
+color4 = #91a6ff
+color5 = #a7d49b
+
+icon = ${colors.color1}
+
+alert = #ffe882
 
 [bar/mainbar]
 monitor = ${env:MONITOR:eDP1}
-width = 90%
-height = 27
-offset-x = 5%
-offset-y = 4
+width = 100%
+height = 28
+offset-x = 0
+offset-y = 0
 radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+icon_color = ${colors.icon}
 
-line-size = 3
-line-color = #f00
+line-size = 2
 
 border-size = 0
-border-color = #00000000
+border-color = #bbb
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
-;font-0 = "Roboto Mono Medium for Powerline:style=regular:size=8;0"
-font-0 = "DejaVu Sans:style=regular:size=8;0"
+font-0 = "DejaVu Sans:style=regular:size=10;0"
 font-1 = "SauceCodePro Nerd Font Mono:style=regular:size=12;0"
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = siji:pixelsize=10;1
+font-2 = "Noto Sans Symbols:style=regular:size=12;0"
+font-3 = "Noto Sans Symbols2:style=regular:size=12;0"
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = filesystem xbacklight volume date
-;modules-right = volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-left = bspwm keyboard xwindow
+modules-right = music-title music-prev music-play music-next space pavolume xbacklight battery filesystem date
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
+tray-transparent = false
+tray-maxsize = 16
+tray-offset-y = -2
 
 wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+[module/space]
+type = custom/text
+content = "   "
+
+[module/keyboard]
+type = internal/xkeyboard
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 60
-fixed-values = true
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
 
 pin-workspaces = false
 
+label-dimmed-focused-underline = ${colors.secondary}
+
 ws-icon-0 = term;
 ws-icon-1 = code;
-ws-icon-2 = web;
-ws-icon-3 = mail;
+ws-icon-2 = web;
+ws-icon-3 = mail;
 ws-icon-4 = music;
-ws-icon-5 = game;
-;ws-icon-5 = game;
+ws-icon-5 = game;
 ws-icon-default = 
 
 label-focused-font = 2
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
 label-occupied-font = 2
@@ -134,211 +115,125 @@ label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <ramp>
-label = BL
+format = <ramp> <label>
 
 ramp-0 = 🌕
 ramp-1 = 🌔
 ramp-2 = 🌓
 ramp-3 = 🌒
 ramp-4 = 🌑
+ramp-foreground = ${colors.icon}
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = =
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+[module/filesystem]
+type = internal/fs
+interval = 60
+fixed-values = true
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage%%
+mount-0 = /
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = eno1
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-mounted-prefix = "🖴 "
+format-mounted-prefix-foreground = ${colors.icon}
+label-mounted = %percentage_used%%
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "%Y-%m-%d "
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-;format-prefix = 
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #0a6cf5
+format-prefix = "🕛 "
+format-prefix-foreground = ${colors.icon}
+label = "%date%%time%  "
 
-label = %date% %time%
+[module/music-play]
+type = custom/script
+interval = 0.8
+click-left = playerctl play-pause
+exec = ~/.config/polybar/mpris.sh play-pause
+
+[module/music-next]
+type = custom/script
+interval = 0.8
+click-left = playerctl next
+exec = ~/.config/polybar/mpris.sh next
+
+[module/music-prev]
+type = custom/script
+interval = 0.8
+click-left = playerctl previous
+exec = ~/.config/polybar/mpris.sh prev
+
+[module/music-title]
+type = custom/script
+interval = 0.5
+label = %output:0:45:...%
+exec = ~/.config/polybar/mpris.sh title
+#click-left = playerctl previous
+#click-middle = playerctl play-pause
+#click-right = playerctl next
 
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
-label-volume-foreground = ${root.foreground}
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-foreground = ${root.foreground}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted = 🔇
+label-muted-foreground = #66
+
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/pavolume.sh --listen
+click-right = exec pavucontrol&
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 99
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-foreground = ${colors.icon}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-foreground = ${colors.icon}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full = <ramp-capacity> <label-full>
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.icon}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.icon}
 animation-charging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = >
-label-open-foreground = ${colors.secondary}
-label-close = < cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true

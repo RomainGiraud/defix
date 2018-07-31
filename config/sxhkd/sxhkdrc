@@ -136,13 +136,13 @@ XF86AudioPrev
     playerctl previous
 
 XF86AudioRaiseVolume
-    pactl set-sink-volume $(pactl list short | grep RUNNING | cut -f1) +5%
+    ~/.config/polybar/pavolume.sh --up
 
 XF86AudioLowerVolume
-    pactl set-sink-volume $(pactl list short | grep RUNNING | cut -f1) -5%
+    ~/.config/polybar/pavolume.sh --down
 
 XF86AudioMute
-    pactl set-sink-mute $(pactl list short | grep RUNNING | cut -f1) toggle
+    ~/.config/polybar/pavolume.sh --togmute
 
 super + BackSpace
     screenlock
