@@ -16,7 +16,7 @@ endif
  
 " display line numbers
 set nu
-set relativenumber
+"set relativenumber
 
 " Consider a file large in MB
 let g:LargeFile=10
@@ -52,7 +52,8 @@ set showcmd
 set hidden
 
 " command completion
-set wildmode=longest,list
+set wildmode=longest,list,full
+set wildmenu
  
 " replace tab by spaces
 set expandtab
@@ -153,67 +154,21 @@ au FileType xquery set tabstop=2
 "autocmd BufNewFile Makefile 0r $HOME/.vim/templates/Makefile.tpl
 
 
-" Vundle
-filetype off                  " required
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'AnsiEsc.vim'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'rust-lang/rust.vim'
+"Plugin 'sheerun/vim-polyglot.git'
+"Plugin 'bkad/CamelCaseMotion'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-" base16 scheme
-Plugin 'chriskempson/base16-vim'
-
-Plugin 'AnsiEsc.vim'
-
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'rust-lang/rust.vim'
-Plugin 'sheerun/vim-polyglot.git'
-
-Plugin 'bkad/CamelCaseMotion'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 
 " color scheme
 
 " number of colors
 " https://github.com/chriskempson/base16-shell
-let base16colorspace="256"
+"let base16colorspace="256"
 
 " dark background
 set background=dark
@@ -222,4 +177,15 @@ set background=dark
 colorscheme base16-solarized-dark
 
 " CamelCaseMotion
-call camelcasemotion#CreateMotionMappings('<leader>')
+"call camelcasemotion#CreateMotionMappings('<leader>')
+
+" Vim cheats a little to enable the mouse with xterms, and once you are
+" using a different $TERM this cheat stops working. You need to tell Vim
+" about your terminal's mouse support. This is done with Vim's ttymouse
+" setting.
+set ttymouse=xterm2
+
+" 24-bit color support
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

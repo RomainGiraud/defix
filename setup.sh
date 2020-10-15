@@ -44,7 +44,6 @@ declare -a CONFIG_FILES=(
 
 function error {
     echo $* 1>&2
-    exit 1
 }
 
 function make_link {
@@ -59,17 +58,22 @@ function make_link {
             error "link to $1 already exists and point to $link_name"
         fi
     fi
-    ln -sf "$target" "$2"
+    echo "target: $1 - $target"
+    echo "link_name: $2 - $link_name"
+    echo ln -sf 1"$target" 2"$2"
+    ln -sf "$target" "$2" || true
 }
 
 for f in ${BIN_FILES[@]}; do
     make_link "bin/$f" "$HOME/bin/$(basename $f)"
 done
 
+echo "== HOME"
 for f in ${!HOME_FILES[@]}; do
     make_link "home/${HOME_FILES[$f]}" "$HOME/$(basename $f)"
 done
 
+echo "== CONFIG"
 for f in ${CONFIG_FILES[@]}; do
     dir=$(dirname $f)
     if [[ "$dir" == "." ]]; then

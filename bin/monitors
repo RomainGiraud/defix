@@ -10,8 +10,9 @@ Usage:
   {0} [command]
 
 Available commands:
-  get   Return list of monitors (connected)
-  set   Set monitors\
+  get             Return list of monitors (connected)
+  set <ids...>    Enable monitors from left to right\
+                    First id will be the primary
 '''.format("monitors")
 
 def error(msg):

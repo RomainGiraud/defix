@@ -1,5 +1,6 @@
 [user]
     name = Romain Giraud
+    email = dev@romaingiraud.com
 [color]
     ui = true
 [alias]
@@ -7,18 +8,22 @@
     ca = commit --amend
     can = commit --amend --no-edit
     st = status --short
-    stl = stash list
-    sts = stash push -u --keep-index
-    stp = stash pop --index
+    stu = status --short --untracked-files=no
+    shl = stash list
+    shpu = stash push -u --keep-index
+    shpo = stash pop --index
     lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an)%Creset %C(blue)<%cr>%Creset'
     dt = difftool
     dtt = !git dt -- $(git st | tail +2 | fzf --tac --multi | awk '{ print $2}')
     mt = mergetool
     br = branch -avv
     g = grep --extended-regexp --line-number --break --heading
+    stats = shortlog -s -n -e
+    # mailmap format: https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-shortlog.html
+    rewrite-authors = !git filter-repo --mailmap $HOME/.mailmap --force
 [core]
     pager = mpager
-	excludesfile = /home/romain/.gitignore
+    excludesfile = /home/romain/.gitignore
 [push]
     default = upstream
 [diff]
@@ -34,7 +39,7 @@
     tool = vimdiff
     guitool = gvimdiff
 [pull]
-    rebase = preserve
+    rebase = merges
 [status]
     showuntrackedfiles = all
 [fetch]
@@ -43,3 +48,5 @@
     enabled = true
 [include]
     path = .gitconfig_local
+[url "git@github.com:"]
+    insteadOf = https://github.com/

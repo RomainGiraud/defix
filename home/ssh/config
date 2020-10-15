@@ -1,0 +1,17 @@
+Host server
+    Hostname 95.216.202.162
+    User root
+    IdentityFile ~/.ssh/keys/hetzner
+
+Host server-deploy
+    Hostname 95.216.202.162
+    User deploy
+    IdentityFile ~/.ssh/keys/hetzner-deploy
+
+Host gitlab.com
+    Preferredauthentications publickey
+    IdentityFile ~/.ssh/keys/gitlab
+
+Host github.com
+    Preferredauthentications publickey
+    IdentityFile ~/.ssh/keys/github

@@ -27,7 +27,7 @@ icon = ${colors.color1}
 alert = #ffe882
 
 [bar/mainbar]
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 28
 offset-x = 0
@@ -55,12 +55,11 @@ font-1 = "SauceCodePro Nerd Font Mono:style=regular:size=12;0"
 font-2 = "Noto Sans Symbols:style=regular:size=12;0"
 font-3 = "Noto Sans Symbols2:style=regular:size=12;0"
 
-modules-left = bspwm keyboard xwindow
-modules-right = music-title music-prev music-play music-next space pavolume xbacklight battery filesystem date
+modules-left = bspwm xwindow
+modules-right = music-title music-prev music-play music-next space keyboard wired-network wireless-network pavolume xbacklight battery filesystem date
 
 tray-position = right
 tray-padding = 2
-tray-transparent = false
 tray-maxsize = 16
 tray-offset-y = -2
 
@@ -73,8 +72,13 @@ scroll-down = bspwm-deskprev
 type = custom/text
 content = "   "
 
+#[module/keyboard]
+#type = internal/xkeyboard
 [module/keyboard]
-type = internal/xkeyboard
+type = custom/script
+interval = 0.8
+click-left = exec ~/.config/polybar/keyboard.sh switch "fr,us"
+exec = ~/.config/polybar/keyboard.sh layout
 
 [module/xwindow]
 type = internal/xwindow
@@ -114,6 +118,33 @@ label-empty-font = 2
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
+[module/wired-network]
+type = internal/network
+interface = enp0s31f6
+
+format-connected = <ramp-signal> <label-connected>
+
+label-connected = '\f919'
+
+ramp-signal-0 = 😱
+ramp-signal-foreground = ${colors.icon}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp61s0
+
+format-connected = <ramp-signal> <label-connected>
+
+label-connected = %essid%
+
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+ramp-signal-foreground = ${colors.icon}
 
 [module/xbacklight]
 type = internal/xbacklight

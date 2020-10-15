@@ -1,29 +1,18 @@
 #!/usr/bin/bash
 
-numbers=${1:-$(monitors get | wc -l)}
+monitors=($(monitors get))
+numbers=${#monitors[@]}
 
 if [[ $numbers == 1 ]]; then
-  monitors set eDP1
-  
-  bspc monitor HDMI2 -a tmp-1
-  bspc desktop code -m eDP1
-  bspc monitor HDMI2 -r
-  
-  bspc monitor HDMI3 -a tmp-2
+  monitors set ${monitors[0]}
+
   bspc desktop term -m eDP1
-  bspc monitor HDMI3 -r
-  
-  bspc monitor eDP1 -o term code web mail music game
+elif [[ $numbers == 2 ]]; then
+  monitors set ${monitors[0]} ${monitors[1]}
 
-  bspc desktop -f term
-
-  bspc monitor HDMI3 -r
-  bspc monitor HDMI2 -r
-#elif [[ $numbers == 2 ]]; then
-#  bspc monitor eDP1 -d web mail music game
-#  bspc monitor HDMI3 -d term code
+  bspc desktop term -m HDMI2
 elif [[ $numbers == 3 ]]; then
-  monitors set eDP1 HDMI3 HDMI2
+  monitors set ${monitors[0]} ${monitors[1]} ${monitors[2]}
   
   bspc desktop term -m HDMI3
   bspc desktop code -m HDMI2
@@ -34,4 +23,4 @@ elif [[ $numbers == 3 ]]; then
   bspc desktop -f term
 fi
 
-feh --bg-fill ~/Documents/images/mountains.jpg
+$HOME/.fehbg &
